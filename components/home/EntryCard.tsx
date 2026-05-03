@@ -31,7 +31,7 @@ export default function EntryCard({
 
   return (
     <>
-      <li className="flex-[1_0_0] min-w-[350px] relative group">
+      <li className="relative group">
         {/* Card */}
         <button
           onClick={() => setOpen(true)}
