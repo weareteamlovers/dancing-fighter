@@ -1,26 +1,16 @@
-export interface ExpenseBreakdown {
-  food: string        // 식비
-  transport: string   // 교통비
-  date: string        // 데이트 비용
-  telecom: string     // 통신비
-  housing: string     // 주거비
-  other: string       // 기타
-}
-
 export interface FormData {
-  income: string              // 월 소득 (자유 입력)
-  expenses: ExpenseBreakdown  // 지출 세분화
-  savings: string             // 저축 목표
-  unexpected: string          // 예상 못한 지출
-  goal: string                // 재무 목표/고민
+  age: string           // #01 현재 나이
+  assets: string        // #02 현재 자산
+  debt: string          // #03 현재 부채
+  goalEndOfYear: string // #04 올해 연말 목표 자산
+  goalIn4Years: string  // #05 4년 후 목표 자산
+  goalAt30: string      // #06 서른살 목표 자산
+  expenses: string      // #07 현재 지출 (고정, 변동)
+  housing: string       // #08 주거 형태
+  parentSupport: string // #09 부모님 지원 (선택)
+  income: string        // #10 현재 소득 및 업종 (선택)
+  freeTime: string      // #11 일주일 중 자유시간
+  etc: string           // #12 기타 특이사항 및 자기소개
 }
 
-export interface ReportRequest {
-  formData: FormData
-}
-
-export interface ReportSection {
-  title: string
-  content: string
-  emoji?: string
-}
+export type FormField = keyof FormData

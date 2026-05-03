@@ -1,68 +1,39 @@
 import { create } from 'zustand'
-import { FormData, ExpenseBreakdown } from '@/types'
+import { FormData, FormField } from '@/types'
 
-const defaultExpenses: ExpenseBreakdown = {
-  food: '',
-  transport: '',
-  date: '',
-  telecom: '',
+const emptyForm: FormData = {
+  age: '',
+  assets: '',
+  debt: '',
+  goalEndOfYear: '',
+  goalIn4Years: '',
+  goalAt30: '',
+  expenses: '',
   housing: '',
-  other: '',
+  parentSupport: '',
+  income: '',
+  freeTime: '',
+  etc: '',
 }
 
 interface FormStore {
   formData: FormData
-  setIncome: (v: string) => void
-  setExpense: (key: keyof ExpenseBreakdown, value: string) => void
-  setSavings: (v: string) => void
-  setUnexpected: (v: string) => void
-  setGoal: (v: string) => void
+  setField: (field: FormField, value: string) => void
   isComplete: () => boolean
   reset: () => void
 }
 
 export const useFormStore = create<FormStore>((set, get) => ({
-  formData: {
-    income: '',
-    expenses: { ...defaultExpenses },
-    savings: '',
-    unexpected: '',
-    goal: '',
-  },
+  formData: { ...emptyForm },
 
-  setIncome: (v) =>
-    set((s) => ({ formData: { ...s.formData, income: v } })),
-
-  setExpense: (key, value) =>
-    set((s) => ({
-      formData: {
-        ...s.formData,
-        expenses: { ...s.formData.expenses, [key]: value },
-      },
-    })),
-
-  setSavings: (v) =>
-    set((s) => ({ formData: { ...s.formData, savings: v } })),
-
-  setUnexpected: (v) =>
-    set((s) => ({ formData: { ...s.formData, unexpected: v } })),
-
-  setGoal: (v) =>
-    set((s) => ({ formData: { ...s.formData, goal: v } })),
+  setField: (field, value) =>
+    set((s) => ({ formData: { ...s.formData, [field]: value } })),
 
   isComplete: () => {
     const { formData } = get()
-    return !!(formData.income || Object.values(formData.expenses).some(Boolean))
+    const required: FormField[] = ['age', 'assets', 'debt', 'expenses']
+    return required.some((f) => formData[f].trim().length > 0)
   },
 
-  reset: () =>
-    set({
-      formData: {
-        income: '',
-        expenses: { ...defaultExpenses },
-        savings: '',
-        unexpected: '',
-        goal: '',
-      },
-    }),
+  reset: () => set({ formData: { ...emptyForm } }),
 }))
