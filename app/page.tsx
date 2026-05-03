@@ -141,12 +141,12 @@ export default function HomePage() {
         <div className="absolute inset-0 bg-black/5 pointer-events-none" />
         <div className="relative flex flex-col gap-5 items-center text-center text-af-yellow px-10 max-w-[600px] w-full text-shadow-hero">
           <h1
-            className="text-[60px] leading-[1.1] tracking-[0.01em] w-full"
+            className="text-[90px] leading-[1.1] tracking-[0.01em] w-full"
             style={{ fontFamily: 'DotGothic16, "Noto Sans KR", sans-serif' }}
           >
             안티프리즈:
           </h1>
-          <p className="font-mono text-[13px] tracking-[-0.03em] leading-[1.2] w-full whitespace-pre-line">
+          <p className="font-mono text-[20px] tracking-[-0.03em] leading-[1.4] w-full whitespace-pre-line">
             {`얼어붙고 싶지 않은 청춘들의 금융 일기장`}
           </p>
         </div>
@@ -175,7 +175,7 @@ export default function HomePage() {
           {Array.from({ length: 8 }).map((_, i) => (
             <span
               key={i}
-              className="text-af-red text-sm tracking-[-0.02em] px-8"
+              className="text-af-red text-base tracking-[-0.02em] px-8"
               style={{ fontFamily: 'DotGothic16, "Noto Sans KR", sans-serif' }}
             >
               ☀ 돈이 별로 없을 때도 우리들은 얼어붙지 않을거야
@@ -190,12 +190,12 @@ export default function HomePage() {
       {/* Checklist heading */}
       <header className="border-l border-r border-af-border w-full px-[10px] py-[150px] flex flex-col items-center gap-[30px] text-center text-af-red shrink-0 overflow-hidden">
         <h2
-          className="text-[45px] leading-[0.9] tracking-[-0.03em] whitespace-nowrap"
+          className="text-[80px] leading-[0.9] tracking-[-0.03em] whitespace-nowrap"
           style={{ fontFamily: 'DotGothic16, "Noto Sans KR", sans-serif' }}
         >
           Checklist!
         </h2>
-        <div className="font-mono text-base tracking-[-0.03em] leading-[1.3]">
+        <div className="font-mono text-[20px] tracking-[-0.03em] leading-[1.4]">
           <p>자산과 생활 설계를 위해 현재 상황을 알려주세요.</p>
           <p>
             12가지 사항만 간단히 입력하면 돼요!

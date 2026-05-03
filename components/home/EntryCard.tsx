@@ -40,7 +40,7 @@ export default function EntryCard({
           {/* Inner content area */}
           <div className="flex flex-col gap-[30px] h-[520px] items-end px-10 w-full">
             {/* Folio label */}
-            <div className="flex items-center justify-between w-full font-mono text-af-red text-xl leading-[1.3] tracking-[-0.03em] whitespace-nowrap shrink-0">
+            <div className="flex items-center justify-between w-full font-mono text-af-red text-2xl leading-[1.3] tracking-[-0.03em] whitespace-nowrap shrink-0">
               <span>Entry</span>
               <span>#{num}</span>
             </div>
@@ -59,7 +59,7 @@ export default function EntryCard({
 
             {/* Title */}
             <div className="flex-1 flex items-center justify-center w-full min-h-0">
-              <p className="font-mono text-af-red text-xl leading-[1.3] tracking-[-0.03em] text-center">
+              <p className="font-mono text-af-red text-2xl leading-[1.3] tracking-[-0.03em] text-center">
                 {title}
               </p>
             </div>
@@ -67,7 +67,7 @@ export default function EntryCard({
             {/* Bottom row: badge (centered) + arrow (right) */}
             <div className="relative flex items-center justify-center w-full shrink-0">
               <div className={`px-4 h-[30px] flex items-center justify-center ${filled ? 'bg-af-border' : 'bg-af-red'}`}>
-                <span className="font-mono text-af-yellow text-base leading-[1.3] tracking-[-0.03em] whitespace-nowrap">
+                <span className="font-mono text-af-yellow text-lg leading-[1.3] tracking-[-0.03em] whitespace-nowrap">
                   {filled ? '완료' : '입력'}
                 </span>
               </div>
