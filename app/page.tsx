@@ -188,7 +188,7 @@ export default function HomePage() {
       </header>
 
       {/* Entry cards grid */}
-      <ol className="border border-af-border w-full flex flex-wrap content-start items-start overflow-hidden shrink-0 pb-10">
+      <ol className="border border-af-border w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 overflow-hidden shrink-0 pb-10">
         {ENTRIES.map((entry) => (
           <EntryCard key={entry.num} {...entry} />
         ))}
