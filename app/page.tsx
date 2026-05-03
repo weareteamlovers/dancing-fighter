@@ -134,13 +134,11 @@ export default function HomePage() {
     <div className="bg-af-yellow flex flex-col items-center">
 
       {/* Hero */}
-      <header className="border border-af-border w-full max-w-[1500px] h-[700px] relative overflow-hidden flex flex-col items-center justify-center shrink-0">
-        <div
-          className="absolute inset-0 pointer-events-none bg-cover bg-center bg-no-repeat"
-          style={{ backgroundImage: `url(${HERO_IMG})` }}
-        >
-          <div className="absolute inset-0 bg-black/5" />
-        </div>
+      <header
+        className="border border-af-border w-full h-[700px] relative overflow-hidden flex flex-col items-center justify-center shrink-0 bg-cover bg-center bg-no-repeat"
+        style={{ backgroundImage: `url(${HERO_IMG})` }}
+      >
+        <div className="absolute inset-0 bg-black/5 pointer-events-none" />
         <div className="relative flex flex-col gap-5 items-center text-center text-af-yellow px-10 max-w-[600px] w-full text-shadow-hero">
           <h1
             className="text-[60px] leading-[1.1] tracking-[0.01em] w-full"
