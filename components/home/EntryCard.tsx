@@ -38,7 +38,7 @@ export default function EntryCard({
           className="w-full bg-af-yellow border border-af-border flex flex-col items-center justify-center pb-10 pt-[45px] px-3 overflow-clip hover:bg-af-yellow-hover transition-colors text-left"
         >
           {/* Inner content area */}
-          <div className="flex flex-col gap-[30px] h-[375px] items-end px-10 w-full">
+          <div className="flex flex-col gap-[30px] h-[520px] items-end px-10 w-full">
             {/* Folio label */}
             <div className="flex items-center justify-between w-full font-mono text-af-red text-xl leading-[1.3] tracking-[-0.03em] whitespace-nowrap shrink-0">
               <span>Entry</span>
@@ -64,14 +64,14 @@ export default function EntryCard({
               </p>
             </div>
 
-            {/* Bottom row: badge + arrow */}
-            <div className="flex items-center justify-between w-full shrink-0">
+            {/* Bottom row: badge (centered) + arrow (right) */}
+            <div className="relative flex items-center justify-center w-full shrink-0">
               <div className={`px-4 h-[30px] flex items-center justify-center ${filled ? 'bg-af-border' : 'bg-af-red'}`}>
                 <span className="font-mono text-af-yellow text-base leading-[1.3] tracking-[-0.03em] whitespace-nowrap">
                   {filled ? '완료' : '입력'}
                 </span>
               </div>
-              <div className="flex items-center justify-center h-7 w-7">
+              <div className="absolute right-0 flex items-center justify-center h-7 w-7">
                 <span className="font-mono text-af-red text-2xl rotate-90 inline-block leading-none">↙</span>
               </div>
             </div>
