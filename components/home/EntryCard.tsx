@@ -64,24 +64,19 @@ export default function EntryCard({
               </p>
             </div>
 
-            {/* Arrow indicator */}
-            <div className="flex items-center justify-center shrink-0 h-7 w-7">
-              <span className="font-mono text-af-red text-2xl rotate-90 inline-block leading-none">↙</span>
+            {/* Bottom row: badge + arrow */}
+            <div className="flex items-center justify-between w-full shrink-0">
+              <div className={`px-4 h-[30px] flex items-center justify-center ${filled ? 'bg-af-border' : 'bg-af-red'}`}>
+                <span className="font-mono text-af-yellow text-base leading-[1.3] tracking-[-0.03em] whitespace-nowrap">
+                  {filled ? '완료' : '입력'}
+                </span>
+              </div>
+              <div className="flex items-center justify-center h-7 w-7">
+                <span className="font-mono text-af-red text-2xl rotate-90 inline-block leading-none">↙</span>
+              </div>
             </div>
           </div>
         </button>
-
-        {/* 입력 badge */}
-        <div
-          className="absolute left-1/2 -translate-x-1/2 bottom-0 translate-y-[1px] z-10 cursor-pointer"
-          onClick={() => setOpen(true)}
-        >
-          <div className={`px-4 h-[30px] flex items-center justify-center ${filled ? 'bg-af-border' : 'bg-af-red'}`}>
-            <span className="font-mono text-af-yellow text-base leading-[1.3] tracking-[-0.03em] whitespace-nowrap">
-              {filled ? '완료' : '입력'}
-            </span>
-          </div>
-        </div>
       </li>
 
       {open && (
