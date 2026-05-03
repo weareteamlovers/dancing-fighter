@@ -65,7 +65,7 @@ export default function EntryCard({
             </div>
 
             {/* Bottom row: badge (centered) + arrow (right) */}
-            <div className="relative flex items-center justify-center w-full mt-auto shrink-0">
+            <div className="relative flex items-center justify-center w-full shrink-0">
               <div className={`px-6 h-[44px] flex items-center justify-center ${filled ? 'bg-af-border' : 'bg-af-red'}`}>
                 <span className="font-mono text-af-yellow text-2xl leading-[1.3] tracking-[-0.03em] whitespace-nowrap">
                   {filled ? '완료' : '입력'}
