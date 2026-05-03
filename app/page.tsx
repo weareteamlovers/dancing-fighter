@@ -135,12 +135,10 @@ export default function HomePage() {
 
       {/* Hero */}
       <header className="border border-af-border w-full max-w-[1500px] h-[700px] relative overflow-hidden flex flex-col items-center justify-center shrink-0">
-        <div className="absolute inset-0 pointer-events-none">
-          <img
-            alt="토마토"
-            src={HERO_IMG}
-            className="absolute inset-0 w-full h-full object-cover max-w-none"
-          />
+        <div
+          className="absolute inset-0 pointer-events-none bg-cover bg-center bg-no-repeat"
+          style={{ backgroundImage: `url(${HERO_IMG})` }}
+        >
           <div className="absolute inset-0 bg-black/5" />
         </div>
         <div className="relative flex flex-col gap-5 items-center text-center text-af-yellow px-10 max-w-[600px] w-full text-shadow-hero">
