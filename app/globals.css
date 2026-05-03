@@ -41,51 +41,10 @@ body {
   color: var(--af-yellow);
 }
 
-/* Markdown report styles */
-.report-content h2 {
-  font-size: 1.25rem;
-  font-weight: 700;
-  margin-top: 2rem;
-  margin-bottom: 0.75rem;
-  border-bottom: 1px solid var(--af-border);
-  padding-bottom: 0.5rem;
-  letter-spacing: -0.03em;
-}
-
-.report-content h3 {
-  font-size: 1rem;
-  font-weight: 700;
-  margin-top: 1rem;
-  margin-bottom: 0.5rem;
-}
-
-.report-content p {
-  line-height: 1.75;
-  margin-bottom: 0.75rem;
-}
-
-.report-content ul,
-.report-content ol {
-  margin-left: 1.5rem;
-  margin-bottom: 0.75rem;
-}
-
-.report-content li {
-  line-height: 1.75;
-  margin-bottom: 0.25rem;
-}
-
-.report-content strong {
-  font-weight: 700;
-}
-
-/* Cursor blink for streaming */
-.cursor::after {
-  content: '▋';
-  animation: blink 1s step-end infinite;
-}
-
-@keyframes blink {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0; }
+/* line-clamp utility */
+.line-clamp-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }

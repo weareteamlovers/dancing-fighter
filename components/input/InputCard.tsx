@@ -1,51 +1,43 @@
 'use client'
 
 interface InputCardProps {
-  number: string        // #01, #02 ...
+  emoji: string
   label: string
-  summary?: string      // filled value summary
+  hint: string
+  value: string
   isEmpty: boolean
   onClick: () => void
 }
 
-export default function InputCard({ number, label, summary, isEmpty, onClick }: InputCardProps) {
+export default function InputCard({ emoji, label, hint, value, isEmpty, onClick }: InputCardProps) {
   return (
     <button
       onClick={onClick}
-      className="group w-full border border-af-border p-5 md:p-6 text-left transition-all hover:bg-af-red hover:border-af-red relative overflow-hidden"
+      className="group w-full h-full text-left px-6 py-8 flex flex-col items-center hover:bg-af-red transition-colors"
     >
-      {/* Top row */}
-      <div className="flex items-start justify-between mb-6 md:mb-10">
-        <span className="font-mono text-xs tracking-tight text-af-red group-hover:text-af-yellow transition-colors">
-          {number}
-        </span>
-        <span
-          className={`font-mono text-xs tracking-tight transition-colors ${
-            isEmpty ? 'text-af-red/40 group-hover:text-af-yellow/60' : 'text-af-border group-hover:text-af-yellow'
-          }`}
-        >
-          {isEmpty ? '입력 전' : '입력 완료 ✓'}
-        </span>
+      {/* Vegetable circle */}
+      <div className="w-28 h-28 md:w-32 md:h-32 rounded-full border border-af-border group-hover:border-af-yellow/60 flex items-center justify-center bg-af-yellow group-hover:bg-af-red/80 transition-colors mb-5 overflow-hidden shrink-0">
+        <span className="text-6xl md:text-7xl select-none leading-none">{emoji}</span>
       </div>
 
       {/* Label */}
-      <div className="font-mono font-bold text-lg md:text-xl tracking-tight text-af-red group-hover:text-af-yellow transition-colors leading-tight">
+      <div className="font-mono font-bold text-af-red group-hover:text-af-yellow text-base md:text-lg tracking-tight text-center transition-colors leading-tight">
         {label}
       </div>
 
-      {/* Summary of filled value */}
-      {!isEmpty && summary && (
-        <div className="mt-2 font-mono text-xs text-af-red/70 group-hover:text-af-yellow/70 transition-colors truncate">
-          {summary}
-        </div>
-      )}
+      {/* Value or hint */}
+      <div className="mt-2 font-mono text-xs tracking-tight text-center transition-colors text-af-red/50 group-hover:text-af-yellow/60 min-h-[32px] flex items-center px-2 max-w-[180px]">
+        <span className="line-clamp-2">{isEmpty ? hint : value}</span>
+      </div>
 
-      {/* Click hint */}
-      {isEmpty && (
-        <div className="absolute bottom-4 right-5 font-mono text-xs text-af-red/30 group-hover:text-af-yellow/50 transition-colors">
-          클릭해서 입력 →
-        </div>
-      )}
+      {/* Status badge */}
+      <div className={`mt-4 font-mono text-xs tracking-tight px-4 py-1.5 transition-colors ${
+        isEmpty
+          ? 'border border-af-border text-af-red/60 group-hover:border-af-yellow/50 group-hover:text-af-yellow/60'
+          : 'bg-af-red text-af-yellow group-hover:bg-af-yellow group-hover:text-af-red'
+      }`}>
+        {isEmpty ? '입력하기' : '완료 ✓'}
+      </div>
     </button>
   )
 }

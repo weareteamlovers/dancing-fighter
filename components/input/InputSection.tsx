@@ -3,30 +3,147 @@
 import { useState } from 'react'
 import { useRouter } from 'next/navigation'
 import InputCard from './InputCard'
-import ExpensePopup from './popups/ExpensePopup'
 import SimplePopup from './popups/SimplePopup'
 import { useFormStore } from '@/store/useFormStore'
+import { ExpenseBreakdown } from '@/types'
 
-type PopupType = 'income' | 'expenses' | 'savings' | 'unexpected' | 'goal' | null
+type PopupId = 'income' | keyof ExpenseBreakdown | 'savings' | 'unexpected' | 'goal' | null
+
+interface CardConfig {
+  id: PopupId
+  emoji: string
+  label: string
+  hint: string
+  multiline?: boolean
+  placeholder: string
+  title: string
+  subtitle: string
+}
+
+const CARDS: CardConfig[] = [
+  {
+    id: 'income',
+    emoji: '🍅',
+    label: '월 소득',
+    hint: '세후 실수령액',
+    placeholder: '예: 230만원, 월급 210에 알바 30',
+    title: '월 소득',
+    subtitle: '세후 실수령액 기준으로 자유롭게 입력해 주세요',
+  },
+  {
+    id: 'food',
+    emoji: '🍎',
+    label: '식비',
+    hint: '한 달 식비',
+    placeholder: '예: 30만원, 35만',
+    title: '식비',
+    subtitle: '한 달 식비를 자유롭게 입력해 주세요',
+  },
+  {
+    id: 'transport',
+    emoji: '🥕',
+    label: '교통비',
+    hint: '버스·지하철·택시',
+    placeholder: '예: 7만원, 버스패스 6.5만',
+    title: '교통비',
+    subtitle: '한 달 교통비를 자유롭게 입력해 주세요',
+  },
+  {
+    id: 'date',
+    emoji: '🍒',
+    label: '데이트 비용',
+    hint: '연인과의 지출',
+    placeholder: '예: 20만원, 한 달에 두 번 정도 15씩',
+    title: '데이트 비용',
+    subtitle: '한 달 데이트 비용을 자유롭게 입력해 주세요',
+  },
+  {
+    id: 'telecom',
+    emoji: '🧄',
+    label: '통신비',
+    hint: '핸드폰·인터넷',
+    placeholder: '예: 5만원, 통신비 5.5만',
+    title: '통신비',
+    subtitle: '핸드폰·인터넷 요금을 입력해 주세요',
+  },
+  {
+    id: 'housing',
+    emoji: '🧅',
+    label: '주거비',
+    hint: '월세·관리비',
+    placeholder: '예: 월세 40만원, 보증금 500에 30',
+    title: '주거비',
+    subtitle: '월세, 관리비 등 주거 관련 지출을 입력해 주세요',
+  },
+  {
+    id: 'other',
+    emoji: '🥦',
+    label: '기타 지출',
+    hint: '구독·의류·여가',
+    placeholder: '구독료, 의류, 여가 등 자유롭게',
+    title: '기타 지출',
+    subtitle: '구독료, 의류, 여가 등 기타 지출을 입력해 주세요',
+  },
+  {
+    id: 'savings',
+    emoji: '🌽',
+    label: '저축 목표',
+    hint: '이번 달 목표',
+    placeholder: '예: 매달 50만원, 월급의 20% 저축 중',
+    title: '저축 목표',
+    subtitle: '이번 달 목표 저축액 또는 방식을 입력해 주세요',
+  },
+  {
+    id: 'unexpected',
+    emoji: '🌶️',
+    label: '예상 못한 지출',
+    hint: '계획에 없던 지출',
+    placeholder: '예: 결혼 축의금 10만원, 핸드폰 수리비 20만원',
+    title: '예상 못한 지출',
+    subtitle: '이번 달 계획에 없던 지출을 입력해 주세요',
+    multiline: true,
+  },
+  {
+    id: 'goal',
+    emoji: '🥑',
+    label: '재무 목표 & 고민',
+    hint: '돈에 관한 목표',
+    placeholder: '예: 6개월 안에 300만원 모아서 유럽 여행 가고 싶어.',
+    title: '재무 목표 & 고민',
+    subtitle: '돈에 관한 목표나 고민을 자유롭게 털어놓으세요',
+    multiline: true,
+  },
+]
+
+const EXPENSE_KEYS: (keyof ExpenseBreakdown)[] = ['food', 'transport', 'date', 'telecom', 'housing', 'other']
+
+function isExpenseKey(id: PopupId): id is keyof ExpenseBreakdown {
+  return EXPENSE_KEYS.includes(id as keyof ExpenseBreakdown)
+}
 
 export default function InputSection() {
   const router = useRouter()
-  const [activePopup, setActivePopup] = useState<PopupType>(null)
-  const { formData, setIncome, setSavings, setUnexpected, setGoal, isComplete } = useFormStore()
+  const [activePopup, setActivePopup] = useState<PopupId>(null)
+  const { formData, setIncome, setExpense, setSavings, setUnexpected, setGoal, isComplete } = useFormStore()
 
-  const expenseSummary = Object.entries({
-    '식비': formData.expenses.food,
-    '교통비': formData.expenses.transport,
-    '데이트': formData.expenses.date,
-    '통신비': formData.expenses.telecom,
-    '주거비': formData.expenses.housing,
-    '기타': formData.expenses.other,
-  })
-    .filter(([, v]) => v.trim())
-    .map(([k, v]) => `${k} ${v}`)
-    .join(' · ')
+  const getValue = (id: PopupId): string => {
+    if (!id) return ''
+    if (id === 'income') return formData.income
+    if (id === 'savings') return formData.savings
+    if (id === 'unexpected') return formData.unexpected
+    if (id === 'goal') return formData.goal
+    if (isExpenseKey(id)) return formData.expenses[id]
+    return ''
+  }
 
-  const expensesEmpty = !Object.values(formData.expenses).some((v) => v.trim())
+  const setValue = (id: PopupId, value: string) => {
+    if (!id) return
+    if (id === 'income') setIncome(value)
+    else if (id === 'savings') setSavings(value)
+    else if (id === 'unexpected') setUnexpected(value)
+    else if (id === 'goal') setGoal(value)
+    else if (isExpenseKey(id)) setExpense(id, value)
+  }
 
   const handleStart = () => {
     if (!isComplete()) {
@@ -36,129 +153,94 @@ export default function InputSection() {
     router.push('/report')
   }
 
+  const filledCount = CARDS.filter((c) => getValue(c.id).trim()).length
+  const activeCard = CARDS.find((c) => c.id === activePopup)
+
+  // Fill to complete rows (3 columns): add filler if needed
+  const fillerCount = (3 - (CARDS.length % 3)) % 3
+
   return (
-    <section id="input-section" className="border-t-2 border-af-border">
+    <section id="input-section">
       {/* Section header */}
-      <div className="border-b border-af-border px-6 md:px-12 py-5 flex items-center justify-between">
-        <span className="font-mono text-xs tracking-tight text-af-red/60">
-          FINANCIAL INPUT
+      <div className="border-b border-af-border px-8 md:px-16 py-5 flex items-center justify-between">
+        <span className="font-mono italic font-bold text-af-red text-xl md:text-2xl tracking-tight">
+          Check List!
         </span>
-        <span className="font-mono text-xs tracking-tight text-af-red/60">
-          {[formData.income, expenseSummary, formData.savings, formData.unexpected, formData.goal].filter(Boolean).length} / 5 입력됨
+        <span className="font-mono text-xs text-af-red/50 tracking-tight">
+          {filledCount} / {CARDS.length} 입력됨
         </span>
       </div>
 
-      {/* Input cards grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
-        <div className="border-b md:border-r border-af-border">
-          <InputCard
-            number="#01"
-            label="월 소득"
-            summary={formData.income}
-            isEmpty={!formData.income.trim()}
-            onClick={() => setActivePopup('income')}
-          />
+      {/* Cards grid — 1px gap with grid background for border-like lines */}
+      <div
+        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 border-b border-af-border"
+        style={{ gap: '1px', backgroundColor: '#CA1E08' }}
+      >
+        {CARDS.map((card) => {
+          const value = getValue(card.id)
+          return (
+            <div key={card.id} className="bg-af-yellow">
+              <InputCard
+                emoji={card.emoji}
+                label={card.label}
+                hint={card.hint}
+                value={value}
+                isEmpty={!value.trim()}
+                onClick={() => setActivePopup(card.id)}
+              />
+            </div>
+          )
+        })}
+        {/* Filler cells to complete last row */}
+        {Array.from({ length: fillerCount }).map((_, i) => (
+          <div key={`filler-${i}`} className="bg-af-yellow hidden lg:block" />
+        ))}
+      </div>
+
+      {/* CTA section */}
+      <div className="grid grid-cols-1 lg:grid-cols-2 border-b-0">
+        {/* Left: large decorative image */}
+        <div className="border-r-0 lg:border-r border-af-border flex items-end justify-start px-8 md:px-16 py-10 overflow-hidden relative min-h-[180px]">
+          <span className="absolute bottom-0 left-8 md:left-12 text-[160px] md:text-[200px] leading-none select-none" style={{ marginBottom: '-20px' }}>
+            🌶️
+          </span>
+          <span className="absolute bottom-0 right-0 text-[140px] md:text-[180px] leading-none select-none opacity-60" style={{ marginBottom: '-12px' }}>
+            🍄
+          </span>
         </div>
-        <div className="border-b lg:border-r border-af-border">
-          <InputCard
-            number="#02"
-            label="현재 지출"
-            summary={expenseSummary}
-            isEmpty={expensesEmpty}
-            onClick={() => setActivePopup('expenses')}
-          />
-        </div>
-        <div className="border-b md:border-r lg:border-r-0 border-af-border">
-          <InputCard
-            number="#03"
-            label="저축 목표"
-            summary={formData.savings}
-            isEmpty={!formData.savings.trim()}
-            onClick={() => setActivePopup('savings')}
-          />
-        </div>
-        <div className="border-b md:border-r-0 lg:border-r border-af-border">
-          <InputCard
-            number="#04"
-            label="예상 못한 지출"
-            summary={formData.unexpected}
-            isEmpty={!formData.unexpected.trim()}
-            onClick={() => setActivePopup('unexpected')}
-          />
-        </div>
-        <div className="border-b md:border-r border-af-border md:col-span-2 lg:col-span-1">
-          <InputCard
-            number="#05"
-            label="재무 목표 & 고민"
-            summary={formData.goal}
-            isEmpty={!formData.goal.trim()}
-            onClick={() => setActivePopup('goal')}
-          />
+
+        {/* Right: CTA text + button */}
+        <div className="px-8 md:px-16 py-12 flex flex-col justify-center gap-6 border-t lg:border-t-0 border-af-border">
+          <div>
+            <p className="font-mono font-bold text-af-red text-lg md:text-xl tracking-tight leading-snug">
+              → 자산 및 생활 설계 시작
+            </p>
+            <p className="font-mono text-af-red/60 text-sm tracking-tight mt-1">
+              재산/생활설계 시작 AI
+            </p>
+          </div>
+          <button
+            onClick={handleStart}
+            className="self-start font-mono font-bold text-af-red text-sm tracking-tight border-b-2 border-af-red pb-1 hover:text-af-border hover:border-af-border transition-colors"
+          >
+            리포트 생성하기 →
+          </button>
         </div>
       </div>
 
-      {/* CTA */}
-      <div className="border-t-2 border-af-border p-6 md:p-12 flex flex-col md:flex-row items-center justify-between gap-6">
-        <div className="font-mono text-af-red text-sm tracking-tight leading-relaxed text-center md:text-left">
-          <p>입력한 정보를 바탕으로 AI가</p>
-          <p>이번 달 맞춤 재무 리포트를 생성합니다.</p>
-        </div>
-        <button
-          onClick={handleStart}
-          className="group border-2 border-af-red px-8 py-4 font-mono font-bold text-af-red tracking-tight hover:bg-af-red hover:text-af-yellow transition-all text-sm md:text-base whitespace-nowrap"
-        >
-          자산 및 생활 설계 시작
-          <span className="inline-block ml-2 group-hover:translate-x-1 transition-transform">→</span>
-        </button>
-      </div>
-
-      {/* Popups */}
-      <SimplePopup
-        isOpen={activePopup === 'income'}
-        onClose={() => setActivePopup(null)}
-        title="월 소득"
-        subtitle="세후 실수령액 기준으로 자유롭게 입력해 주세요"
-        placeholder="예: 230만원, 월급 210에 알바 30, 프리랜서 월 평균 350"
-        value={formData.income}
-        onChange={setIncome}
-      />
-
-      <ExpensePopup
-        isOpen={activePopup === 'expenses'}
-        onClose={() => setActivePopup(null)}
-      />
-
-      <SimplePopup
-        isOpen={activePopup === 'savings'}
-        onClose={() => setActivePopup(null)}
-        title="저축 목표"
-        subtitle="이번 달 목표 저축액 또는 저축 방식을 입력해 주세요"
-        placeholder="예: 매달 50만원 저축 목표, 월급의 20% 저축 중"
-        value={formData.savings}
-        onChange={setSavings}
-      />
-
-      <SimplePopup
-        isOpen={activePopup === 'unexpected'}
-        onClose={() => setActivePopup(null)}
-        title="예상 못한 지출"
-        subtitle="이번 달 계획에 없던 지출을 입력해 주세요"
-        placeholder="예: 친구 결혼 축의금 10만원, 핸드폰 수리비 20만원"
-        value={formData.unexpected}
-        onChange={setUnexpected}
-        multiline
-      />
-
-      <SimplePopup
-        isOpen={activePopup === 'goal'}
-        onClose={() => setActivePopup(null)}
-        title="재무 목표 & 고민"
-        subtitle="돈에 관한 목표나 고민을 자유롭게 털어놓으세요"
-        placeholder="예: 6개월 안에 300만원 모아서 유럽 여행 가고 싶어. 근데 매달 남는 돈이 없어서 어떻게 해야 할지 모르겠어."
-        value={formData.goal}
-        onChange={setGoal}
-        multiline
-      />
+      {/* Popup */}
+      {activeCard && (
+        <SimplePopup
+          isOpen={activePopup !== null}
+          onClose={() => setActivePopup(null)}
+          title={activeCard.title}
+          subtitle={activeCard.subtitle}
+          placeholder={activeCard.placeholder}
+          value={getValue(activePopup)}
+          onChange={(v) => setValue(activePopup, v)}
+          multiline={activeCard.multiline}
+        />
+      )}
     </section>
   )
 }

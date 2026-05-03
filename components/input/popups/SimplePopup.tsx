@@ -32,7 +32,8 @@ export default function SimplePopup({
             onChange={(e) => onChange(e.target.value)}
             placeholder={placeholder}
             rows={4}
-            className="w-full bg-transparent border border-af-border text-af-red font-mono text-sm px-3 py-2 placeholder:text-af-red/40 focus:outline-none focus:border-af-red transition-colors resize-none"
+            autoFocus
+            className="w-full bg-transparent border border-af-border text-af-red font-mono text-sm px-4 py-3 placeholder:text-af-red/40 focus:outline-none focus:border-af-red transition-colors resize-none"
           />
         ) : (
           <input
@@ -40,7 +41,9 @@ export default function SimplePopup({
             value={value}
             onChange={(e) => onChange(e.target.value)}
             placeholder={placeholder}
-            className="w-full bg-transparent border border-af-border text-af-red font-mono text-sm px-3 py-2 placeholder:text-af-red/40 focus:outline-none focus:border-af-red transition-colors"
+            autoFocus
+            onKeyDown={(e) => { if (e.key === 'Enter') onClose() }}
+            className="w-full bg-transparent border border-af-border text-af-red font-mono text-sm px-4 py-3 placeholder:text-af-red/40 focus:outline-none focus:border-af-red transition-colors"
           />
         )}
         <button
