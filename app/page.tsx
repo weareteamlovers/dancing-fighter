@@ -188,11 +188,21 @@ export default function HomePage() {
       </header>
 
       {/* Entry cards grid */}
-      <ol className="border border-af-border w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 overflow-hidden shrink-0 pb-10">
+      <ol className="border border-af-border w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 overflow-hidden shrink-0">
         {ENTRIES.map((entry) => (
           <EntryCard key={entry.num} {...entry} />
         ))}
       </ol>
+
+      {/* Banner */}
+      <div className="border border-af-border w-full py-16 flex items-center justify-center overflow-hidden shrink-0">
+        <p
+          className="text-af-red text-[32px] md:text-[45px] leading-[1.1] tracking-[-0.03em] text-center px-6"
+          style={{ fontFamily: 'DotGothic16, "Noto Sans KR", sans-serif' }}
+        >
+          돈이 별로 없을 때도 우리들은 얼어붙지 않을거야
+        </p>
+      </div>
 
       {/* Footer */}
       <footer className="border-t border-af-border w-full py-[173px] relative overflow-hidden flex flex-col items-center justify-center shrink-0">
