@@ -147,7 +147,7 @@ export default function HomePage() {
             안티프리즈:
           </h1>
           <p className="font-mono text-[13px] tracking-[-0.03em] leading-[1.2] w-full whitespace-pre-line">
-            {`청춘을 얼리지 않으면서 지속가능한 지출 계획을 세워줘요.\n\n매주 일요일 밤 예정에 없던 지출을 기록하면, 다음 주 같은 실수를 막아줘요.\n\n돈을 못 모으는 이유보다, 무너지는 순간을 찾아줘요.\n\n이번 달 소비의 원인을 감정과 상황으로 분석해요.`}
+            {`얼어붙고 싶지 않은 청춘들의 금융 일기장`}
           </p>
         </div>
       </header>
