@@ -166,6 +166,24 @@ export default function HomePage() {
         <span className="text-center leading-[0.9]">About Me</span>
       </nav>
 
+      {/* Marquee banner */}
+      <div className="border-b border-l border-r border-af-border w-full overflow-hidden shrink-0 bg-af-yellow" style={{ height: '34px' }}>
+        <div
+          className="flex whitespace-nowrap items-center h-full"
+          style={{ animation: 'marquee 18s linear infinite' }}
+        >
+          {Array.from({ length: 8 }).map((_, i) => (
+            <span
+              key={i}
+              className="text-af-red text-sm tracking-[-0.02em] px-8"
+              style={{ fontFamily: 'DotGothic16, "Noto Sans KR", sans-serif' }}
+            >
+              ☀ 돈이 별로 없을 때도 우리들은 얼어붙지 않을거야
+            </span>
+          ))}
+        </div>
+      </div>
+
       {/* Status bar */}
       <div className="bg-af-yellow border border-af-border w-full shrink-0" style={{ height: 0 }} />
 
@@ -193,16 +211,6 @@ export default function HomePage() {
           <EntryCard key={entry.num} {...entry} />
         ))}
       </ol>
-
-      {/* Banner */}
-      <div className="border border-af-border w-full py-16 flex items-center justify-center overflow-hidden shrink-0">
-        <p
-          className="text-af-red text-[32px] md:text-[45px] leading-[1.1] tracking-[-0.03em] text-center px-6"
-          style={{ fontFamily: 'DotGothic16, "Noto Sans KR", sans-serif' }}
-        >
-          돈이 별로 없을 때도 우리들은 얼어붙지 않을거야
-        </p>
-      </div>
 
       {/* Footer */}
       <footer className="border-t border-af-border w-full py-[173px] relative overflow-hidden flex flex-col items-center justify-center shrink-0">

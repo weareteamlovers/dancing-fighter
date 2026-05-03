@@ -43,3 +43,8 @@ body {
     text-shadow: 0px 0px 4px rgba(0, 0, 0, 0.5);
   }
 }
+
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
