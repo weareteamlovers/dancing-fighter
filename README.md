@@ -1,47 +1,137 @@
-# 안티프리즈 (ANTIFREEZE)
+```
+ █████╗ ███╗   ██╗████████╗██╗███████╗██████╗ ███████╗███████╗███████╗
+██╔══██╗████╗  ██║╚══██╔══╝██║██╔════╝██╔══██╗██╔════╝██╔════╝╚══███╔╝
+███████║██╔██╗ ██║   ██║   ██║█████╗  ██████╔╝█████╗  █████╗    ███╔╝ 
+██╔══██║██║╚██╗██║   ██║   ██║██╔══╝  ██╔══██╗██╔══╝  ██╔══╝   ███╔╝  
+██║  ██║██║ ╚████║   ██║   ██║██║     ██║  ██║███████╗███████╗███████╗
+╚═╝  ╚═╝╚═╝  ╚═══╝   ╚═╝   ╚═╝╚═╝     ╚═╝  ╚═╝╚══════╝╚══════╝╚══════╝
+```
 
-> 경제적인 어려움 속에서도 20대 청춘의 뜨거움은 얼어붙지 않을거야.
+<div align="center">
 
-20대를 위한 경제 생활 AI 리포트 서비스. 지난 달의 과소비와 예상 못한 지출 습관을 추적하고, 실수를 반복하지 않도록 돕습니다.
+**안티프리즈 — 얼어붙지 않는 20대의 금융 일기장**
+
+[![Next.js](https://img.shields.io/badge/Next.js_14-000000?style=for-the-badge&logo=nextdotjs&logoColor=white)](https://nextjs.org)
+[![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white)](https://typescriptlang.org)
+[![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-06B6D4?style=for-the-badge&logo=tailwindcss&logoColor=white)](https://tailwindcss.com)
+[![OpenAI](https://img.shields.io/badge/GPT--4o-412991?style=for-the-badge&logo=openai&logoColor=white)](https://openai.com)
+
+[dancingfighter.com](https://dancingfighter.com)
+
+</div>
+
+---
+
+## ☀ 우리가 돈이 없지, 사랑이 없냐
+
+> *돈이 별로 없을 때도 우리들은 얼어붙지 않을거야.*
+
+경제적인 어려움 속에서도 20대 청춘의 뜨거움은 식지 않는다.  
+**안티프리즈**는 12가지 질문으로 나만의 자산 생활 설계도를 만들어주는 AI 서비스다.  
+회원가입 없이, 지금 바로.
+
+---
 
 ## 빠른 시작
 
 ```bash
-# 1. 의존성 설치
+# 1. 클론
+git clone https://github.com/weareteamlovers/dancing-fighter.git
+cd dancing-fighter
+
+# 2. 의존성 설치
 npm install
 
-# 2. 환경변수 설정
+# 3. 환경변수 설정
 cp .env.local.example .env.local
-# .env.local 파일에 OPENAI_API_KEY 입력
+```
 
-# 3. 개발 서버 실행
+`.env.local` 파일을 열고 API 키를 입력한다:
+
+```env
+OPENAI_API_KEY=sk-...
+NEXT_PUBLIC_APP_URL=http://localhost:3000
+```
+
+```bash
+# 4. 개발 서버 실행
 npm run dev
 ```
 
-→ http://localhost:3000
+→ **[http://localhost:3000](http://localhost:3000)** 에서 확인
+
+---
 
 ## 기술 스택
 
-- **Next.js 14** (App Router)
-- **TypeScript**
-- **Tailwind CSS**
-- **OpenAI GPT-4o** (스트리밍)
-- **Zustand** (상태 관리)
+```
+Frontend   Next.js 14 (App Router) + TypeScript
+Styling    Tailwind CSS — 커스텀 디자인 토큰 (af-yellow / af-red / af-border)
+AI         OpenAI GPT-4o — 스트리밍 응답
+State      Zustand
+Font       Space Mono + DotGothic16
+```
+
+---
+
+## 디자인 시스템
+
+| 토큰 | 색상 | 용도 |
+|------|------|------|
+| `af-yellow` | `#FFFF77` | 배경 |
+| `af-red` | `#8E1606` | 텍스트 |
+| `af-border` | `#CA1E08` | 보더 / 완료 배지 |
+
+에디토리얼 / 매거진 감성. 인쇄물처럼.
+
+---
+
+## 프로젝트 구조
+
+```
+dancing-fighter/
+├── app/
+│   ├── page.tsx           # 홈 (Hero → Checklist → 입력)
+│   ├── report/page.tsx    # AI 리포트 결과
+│   ├── api/report/        # GPT-4o 스트리밍 엔드포인트
+│   └── layout.tsx
+├── components/
+│   └── home/
+│       ├── EntryCard.tsx  # 12개 입력 카드
+│       └── EntryPopup.tsx # 입력 팝업 모달
+├── store/
+│   └── useFormStore.ts    # Zustand 전역 상태
+└── lib/
+    └── openai.ts          # GPT 프롬프트 로직
+```
+
+---
+
+## 핵심 플로우
+
+```
+Hero 섹션
+    ↓
+☀ 마키 배너 (돈이 별로 없을 때도 우리들은 얼어붙지 않을거야)
+    ↓
+Checklist! — 12가지 항목 입력
+    (나이 / 자산 / 부채 / 목표 / 지출 / 주거 / 소득 ···)
+    ↓
+자산 및 생활 설계 시작 →
+    ↓
+GPT-4o 스트리밍 리포트 (/report)
+```
+
+---
 
 ## 환경변수
 
-| 변수 | 설명 |
-|------|------|
-| `OPENAI_API_KEY` | OpenAI API 키 |
-| `NEXT_PUBLIC_APP_URL` | 앱 URL |
+| 변수 | 필수 | 설명 |
+|------|:----:|------|
+| `OPENAI_API_KEY` | ✅ | OpenAI API 키 |
+| `NEXT_PUBLIC_APP_URL` | ✅ | 앱 도메인 URL |
 
-## 1차 MVP 기능
-
-- 회원가입 없이 바로 사용
-- 랜딩 → 입력 → AI 리포트 단일 플로우
-- 지출 항목 세분화 (식비/교통/데이트/통신/주거/기타)
-- 자유형 텍스트 입력 ("2백만원", "월급 230" 등)
-- GPT-4o 스트리밍 리포트 생성
+---
 
 ## 배포
 
@@ -52,4 +142,10 @@ vercel --prod
 
 ---
 
-dancingfighter.com
+<div align="center">
+
+**팀사랑꾼들** · [Instagram](https://instagram.com) · [dancingfighter.com](https://dancingfighter.com)
+
+*돈은 아껴도 사랑은 아끼지 말아요 :)*
+
+</div>
