@@ -131,7 +131,7 @@ export default function HomePage() {
   }
 
   return (
-    <div className="bg-af-yellow flex flex-col items-center">
+    <div className="bg-af-yellow flex flex-col w-full">
 
       {/* Hero */}
       <header
