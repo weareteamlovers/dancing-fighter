@@ -194,16 +194,6 @@ export default function HomePage() {
         ))}
       </ol>
 
-      {/* Generate report CTA */}
-      <div className="border border-af-border w-full flex items-center justify-center py-16 shrink-0">
-        <button
-          onClick={handleSubmit}
-          className="font-mono text-af-yellow bg-af-red text-xl tracking-[-0.03em] px-16 py-5 hover:bg-af-border transition-colors"
-        >
-          자산 생활 설계 리포트 받기 →
-        </button>
-      </div>
-
       {/* Footer */}
       <footer className="border-t border-af-border w-full py-[173px] relative overflow-hidden flex flex-col items-center justify-center shrink-0">
         <img
