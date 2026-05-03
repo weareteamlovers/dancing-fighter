@@ -57,22 +57,23 @@ export default function EntryCard({
               </div>
             </div>
 
-            {/* Title */}
-            <div className="flex items-center justify-center w-full shrink-0">
+            {/* Spacer */}
+            <div className="flex-1" />
+
+            {/* Title + Badge group — fixed at bottom, equal spacing above/below badge */}
+            <div className="flex flex-col items-center gap-[40px] w-full shrink-0">
               <p className="font-mono text-af-red text-2xl leading-[1.3] tracking-[-0.03em] text-center whitespace-pre-line">
                 {title}
               </p>
-            </div>
-
-            {/* Bottom row: badge (centered) + arrow (right) */}
-            <div className="relative flex items-center justify-center w-full shrink-0 mt-16">
-              <div className={`px-6 h-[44px] flex items-center justify-center ${filled ? 'bg-af-border' : 'bg-af-red'}`}>
-                <span className="font-mono text-af-yellow text-2xl leading-[1.3] tracking-[-0.03em] whitespace-nowrap">
-                  {filled ? '완료' : '입력'}
-                </span>
-              </div>
-              <div className="absolute right-0 flex items-center justify-center h-7 w-7">
-                <span className="font-mono text-af-red text-2xl rotate-90 inline-block leading-none">↙</span>
+              <div className="relative flex items-center justify-center w-full">
+                <div className={`px-6 h-[44px] flex items-center justify-center ${filled ? 'bg-af-border' : 'bg-af-red'}`}>
+                  <span className="font-mono text-af-yellow text-2xl leading-[1.3] tracking-[-0.03em] whitespace-nowrap">
+                    {filled ? '완료' : '입력'}
+                  </span>
+                </div>
+                <div className="absolute right-0 flex items-center justify-center h-7 w-7">
+                  <span className="font-mono text-af-red text-2xl rotate-90 inline-block leading-none">↙</span>
+                </div>
               </div>
             </div>
           </div>
