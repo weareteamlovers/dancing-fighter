@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { openai, buildSystemPrompt, buildUserPrompt } from '@/lib/openai'
+import { getOpenAI, buildSystemPrompt, buildUserPrompt } from '@/lib/openai'
 import { FormData } from '@/types'
 
 export async function POST(req: NextRequest) {
@@ -11,7 +11,7 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: '입력 데이터가 없습니다.' }, { status: 400 })
     }
 
-    const stream = await openai.chat.completions.create({
+    const stream = await getOpenAI().chat.completions.create({
       model: 'gpt-4o',
       messages: [
         { role: 'system', content: buildSystemPrompt() },

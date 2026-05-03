@@ -10,13 +10,13 @@ const spaceMono = Space_Mono({
 })
 
 export const metadata: Metadata = {
-  title: '안티프리즈 — 얼어붙지 않는 20대 재무 리포트',
+  title: '안티프리즈 — 얼어붙지 않는 20대 자산 설계 AI',
   description:
-    '경제적인 어려움 속에서도 20대 청춘의 뜨거움은 얼어붙지 않을거야. 20대를 위한 경제 생활 AI 리포트 서비스.',
-  keywords: ['재무', '소비', '저축', '20대', '경제', 'AI 리포트'],
+    '경제적인 어려움 속에서도 20대 청춘의 뜨거움은 얼어붙지 않을거야. 12가지 질문으로 만드는 나만의 자산 생활 설계도.',
+  keywords: ['재무', '자산', '저축', '20대', '경제', 'AI 리포트'],
   openGraph: {
     title: '안티프리즈',
-    description: '20대를 위한 경제 생활 AI 리포트',
+    description: '20대를 위한 자산 생활 설계 AI',
     url: 'https://dancingfighter.com',
   },
 }
@@ -28,7 +28,15 @@ export default function RootLayout({
 }) {
   return (
     <html lang="ko" className={spaceMono.variable}>
-      <body className="bg-af-yellow font-mono antialiased">{children}</body>
+      <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link
+          href="https://fonts.googleapis.com/css2?family=DotGothic16&family=Noto+Sans+KR:wght@400;700&display=swap"
+          rel="stylesheet"
+        />
+      </head>
+      <body className="bg-af-yellow antialiased">{children}</body>
     </html>
   )
 }
