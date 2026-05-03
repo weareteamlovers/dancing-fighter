@@ -59,7 +59,7 @@ export default function EntryCard({
 
             {/* Title */}
             <div className="flex-1 flex items-center justify-center w-full min-h-0">
-              <p className="font-mono text-af-red text-2xl leading-[1.3] tracking-[-0.03em] text-center">
+              <p className="font-mono text-af-red text-2xl leading-[1.3] tracking-[-0.03em] text-center whitespace-pre-line">
                 {title}
               </p>
             </div>
