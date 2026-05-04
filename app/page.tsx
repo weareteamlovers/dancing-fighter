@@ -139,7 +139,7 @@ export default function HomePage() {
         style={{ backgroundImage: `url(${HERO_IMG})` }}
       >
         <div className="absolute inset-0 bg-black/5 pointer-events-none" />
-        <div className="relative flex flex-col gap-5 items-center text-center text-af-yellow px-10 max-w-[600px] w-full text-shadow-hero">
+        <div className="relative flex flex-col gap-5 items-center text-center text-white px-10 max-w-[600px] w-full text-shadow-hero">
           <h1
             className="text-[90px] leading-[1.1] tracking-[0.01em] w-full"
             style={{ fontFamily: 'DotGothic16, "Noto Sans KR", sans-serif' }}
