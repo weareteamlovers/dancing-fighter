@@ -176,7 +176,7 @@ export default function ReportDisplay() {
                     <span>#03</span>
                     <span>Entry</span>
                   </div>
-                  <p className="font-mono text-af-red text-xl leading-[1.3] tracking-[-0.03em] text-center w-full whitespace-nowrap">
+                  <p className="font-mono text-af-red text-xl leading-[1.3] tracking-[-0.03em] whitespace-nowrap">
                     입력 사항 수정하러 가기
                   </p>
                   <div className="flex items-center justify-between w-full">
@@ -196,9 +196,9 @@ export default function ReportDisplay() {
                     <span>#05</span>
                   </div>
                   <div className="font-mono text-af-red text-xl leading-[1.3] tracking-[-0.03em] whitespace-nowrap">
-                    <p className="hidden md:block">회원가입하고 꾸준한 자산 증식 이어가기</p>
-                    <p className="md:hidden">회원가입하고</p>
-                    <p className="md:hidden">꾸준한 자산 증식 이어가기</p>
+                    <p className="hidden lg:block">회원가입하고 꾸준한 자산 증식 이어가기</p>
+                    <p className="lg:hidden">회원가입하고</p>
+                    <p className="lg:hidden">꾸준한 자산 증식 이어가기</p>
                   </div>
                   <div className="flex items-center justify-between w-full">
                     <div className="h-[147px] w-[139px] relative overflow-hidden shrink-0">
