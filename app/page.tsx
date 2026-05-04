@@ -20,7 +20,7 @@ const ENTRIES = [
   {
     num: '02',
     field: 'assets' as const,
-    title: '현재 자산\n(ex.예금 100만원\n  주식투자 200만원)',
+    title: '현재 자산',
     placeholder: 'ex) 예금 100만원, 주식투자 200만원',
     imgSrc: 'https://www.figma.com/api/mcp/asset/8c056564-11eb-4d04-94d2-15db257603e7',
     imgAlt: '사과',
@@ -29,7 +29,7 @@ const ENTRIES = [
   {
     num: '03',
     field: 'debt' as const,
-    title: '현재 부채\n(ex.학자금 대출 2000만원)',
+    title: '현재 부채',
     placeholder: 'ex) 학자금 대출 2000만원',
     imgSrc: 'https://www.figma.com/api/mcp/asset/b555f641-eb09-43da-8be3-062edd4311c0',
     imgAlt: '호박',
@@ -83,7 +83,7 @@ const ENTRIES = [
   {
     num: '09',
     field: 'parentSupport' as const,
-    title: '(선택) 부모님으로부터\n지원받는 금액이 있어요',
+    title: '( 선택 ) 부모님으로부터\n지원받는 금액이 있어요',
     placeholder: 'ex) 월 30만원 용돈',
     imgSrc: 'https://www.figma.com/api/mcp/asset/6745e321-2c50-4184-a02d-3030b20b1ae6',
     imgAlt: '상추',
@@ -92,7 +92,7 @@ const ENTRIES = [
   {
     num: '10',
     field: 'income' as const,
-    title: '(선택) 현재 소득 및 업종',
+    title: '( 선택 ) 현재 소득 및 업종',
     placeholder: 'ex) 직장인 월 230만원, IT업종',
     imgSrc: 'https://www.figma.com/api/mcp/asset/93439a6c-2121-4f41-a076-0bf3d45b1e04',
     imgAlt: '고추',
