@@ -10,12 +10,12 @@ interface ExpensesPopupProps {
 
 const ITEMS = [
   { key: 'food',      label: '식비',      placeholder: 'ex) 30만원' },
-  { key: 'transport', label: '교통비',    placeholder: 'ex) 10만원' },
-  { key: 'telecom',   label: '통신비',    placeholder: 'ex) 6만원' },
-  { key: 'date',      label: '데이트비용', placeholder: 'ex) 20만원' },
+  { key: 'date',      label: '데이트 비용', placeholder: 'ex) 20만원' },
+  { key: 'drink',     label: '술 / 친구 약속',   placeholder: 'ex) 10만원' },
+  { key: 'transport', label: '교통비',    placeholder: 'ex) 5만 5천원' },
+  { key: 'telecom',   label: '통신비',    placeholder: 'ex) 4만원' },
   { key: 'sub',       label: '구독료',    placeholder: 'ex) 유튜브 넷플릭스 챗지피티 등 대략 6만원' },
   { key: 'shopping',  label: '쇼핑',      placeholder: 'ex) 15만원' },
-  { key: 'drink',     label: '술 약속',   placeholder: 'ex) 10만원' },
   { key: 'etc',       label: '기타',      placeholder: '자유롭게 입력하세요!' },
 ] as const
 
