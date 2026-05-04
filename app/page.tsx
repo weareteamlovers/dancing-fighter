@@ -38,7 +38,7 @@ const ENTRIES = [
   {
     num: '04',
     field: 'goalEndOfYear' as const,
-    title: '올해 연말\n목표 자산',
+    title: '1개월 후\n목표 자산',
     placeholder: 'ex) 500만원',
     imgSrc: 'https://www.figma.com/api/mcp/asset/014bd5fc-e5d8-48c5-aa4e-4a2411959fce',
     imgAlt: '배',
@@ -47,7 +47,7 @@ const ENTRIES = [
   {
     num: '05',
     field: 'goalIn4Years' as const,
-    title: '4년 후\n목표 자산',
+    title: '3개월 후\n목표 자산',
     placeholder: 'ex) 5000만원',
     imgSrc: 'https://www.figma.com/api/mcp/asset/76497de5-18d4-48f4-b17b-3229db32b7f7',
     imgAlt: '토마토',
@@ -56,7 +56,7 @@ const ENTRIES = [
   {
     num: '06',
     field: 'goalAt30' as const,
-    title: '서른살\n목표 자산',
+    title: '6개월 후\n목표 자산',
     placeholder: 'ex) 1억원',
     imgSrc: 'https://www.figma.com/api/mcp/asset/94b5a728-3fd6-4182-b0ae-f74d9a919ac9',
     imgAlt: '브로콜리',

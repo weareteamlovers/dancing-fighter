@@ -2,9 +2,9 @@ export interface FormData {
   age: string           // #01 현재 나이
   assets: string        // #02 현재 자산
   debt: string          // #03 현재 부채
-  goalEndOfYear: string // #04 올해 연말 목표 자산
-  goalIn4Years: string  // #05 4년 후 목표 자산
-  goalAt30: string      // #06 서른살 목표 자산
+  goalEndOfYear: string // #04 1개월 후 목표 자산
+  goalIn4Years: string  // #05 3개월 후 목표 자산
+  goalAt30: string      // #06 6개월 후 목표 자산
   expenses: string      // #07 현재 지출 (고정, 변동)
   housing: string       // #08 주거 형태
   parentSupport: string // #09 부모님 지원 (선택)
