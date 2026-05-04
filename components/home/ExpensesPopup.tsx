@@ -10,7 +10,7 @@ interface ExpensesPopupProps {
 
 const ITEMS = [
   { key: 'food',      label: '식비',      placeholder: 'ex) 30만원' },
-  { key: 'housing',   label: '주거비',    placeholder: 'ex) 월세 40만원' },
+  { key: 'housing',   label: '주거비',    placeholder: 'ex) 보증금 500에 월세 40 / 전세 1억 / 본가' },
   { key: 'date',      label: '데이트 비용', placeholder: 'ex) 20만원' },
   { key: 'drink',     label: '술 / 친구 약속',   placeholder: 'ex) 10만원' },
   { key: 'transport', label: '교통비',    placeholder: 'ex) 5만 5천원' },
