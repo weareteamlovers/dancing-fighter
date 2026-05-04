@@ -13,6 +13,7 @@ const config: Config = {
         'af-yellow-hover': 'var(--af-yellow-hover)',
         'af-red': 'var(--af-red)',
         'af-border': 'var(--af-border)',
+        'af-hero-text': 'var(--af-hero-text)',
       },
       fontFamily: {
         dot: ['DotGothic16', 'Noto Sans KR', 'sans-serif'],

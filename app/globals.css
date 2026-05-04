@@ -8,6 +8,7 @@
   --af-yellow-hover: #ffdf4e;
   --af-red: #8e1606;
   --af-border: #ca1e08;
+  --af-hero-text: #ffff77;
 }
 
 [data-theme="white"] {
@@ -15,6 +16,7 @@
   --af-yellow-hover: #f0f0f0;
   --af-red: #8e1606;
   --af-border: #ca1e08;
+  --af-hero-text: #ffffff;
 }
 
 [data-theme="dark"] {
@@ -22,6 +24,7 @@
   --af-yellow-hover: #404040;
   --af-red: #ffffff;
   --af-border: #ffffff;
+  --af-hero-text: #ffffff;
 }
 
 * {
