@@ -188,7 +188,7 @@ export default function HomePage() {
       <div className="bg-af-yellow border border-af-border w-full shrink-0" style={{ height: 0 }} />
 
       {/* Checklist heading */}
-      <header className="border-l border-r border-af-border w-full px-[10px] py-[150px] flex flex-col items-center gap-[30px] text-center text-af-red shrink-0 overflow-hidden">
+      <header className="border-l border-r border-af-border w-full px-[10px] py-[150px] flex flex-col items-center gap-[60px] text-center text-af-red shrink-0 overflow-hidden">
         <h2
           className="text-[80px] leading-[0.9] tracking-[-0.03em] whitespace-nowrap"
           style={{ fontFamily: 'DotGothic16, "Noto Sans KR", sans-serif' }}
