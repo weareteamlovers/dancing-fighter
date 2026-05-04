@@ -9,10 +9,10 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        'af-yellow': '#FFFF77',
-        'af-yellow-hover': '#FFDF4E',
-        'af-red': '#8E1606',
-        'af-border': '#CA1E08',
+        'af-yellow': 'var(--af-yellow)',
+        'af-yellow-hover': 'var(--af-yellow-hover)',
+        'af-red': 'var(--af-red)',
+        'af-border': 'var(--af-border)',
       },
       fontFamily: {
         dot: ['DotGothic16', 'Noto Sans KR', 'sans-serif'],

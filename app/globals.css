@@ -2,10 +2,26 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
+:root,
+[data-theme="yellow"] {
   --af-yellow: #ffff77;
+  --af-yellow-hover: #ffdf4e;
   --af-red: #8e1606;
   --af-border: #ca1e08;
+}
+
+[data-theme="white"] {
+  --af-yellow: #ffffff;
+  --af-yellow-hover: #f0f0f0;
+  --af-red: #8e1606;
+  --af-border: #ca1e08;
+}
+
+[data-theme="dark"] {
+  --af-yellow: #303030;
+  --af-yellow-hover: #404040;
+  --af-red: #ffffff;
+  --af-border: #ffffff;
 }
 
 * {

@@ -1,6 +1,8 @@
 import type { Metadata } from 'next'
 import { Space_Mono } from 'next/font/google'
 import './globals.css'
+import ThemeApplier from '@/components/ThemeApplier'
+import ThemeToggle from '@/components/ThemeToggle'
 
 const spaceMono = Space_Mono({
   subsets: ['latin'],
@@ -36,7 +38,11 @@ export default function RootLayout({
           rel="stylesheet"
         />
       </head>
-      <body className="bg-af-yellow antialiased">{children}</body>
+      <body className="bg-af-yellow antialiased">
+        <ThemeApplier />
+        {children}
+        <ThemeToggle />
+      </body>
     </html>
   )
 }
