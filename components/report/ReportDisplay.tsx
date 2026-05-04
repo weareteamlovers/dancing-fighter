@@ -166,12 +166,12 @@ export default function ReportDisplay() {
             </section>
 
             {/* Navigation */}
-            <div className="border-b border-t border-af-border w-full h-[460px] flex items-stretch overflow-hidden shrink-0">
+            <div className="border-b border-t border-af-border w-full h-auto md:h-[460px] flex flex-col md:flex-row items-stretch overflow-hidden shrink-0">
               <button
                 onClick={() => router.push('/')}
-                className="bg-af-yellow border-r border-af-border flex-1 flex items-end justify-between p-[50px] hover:bg-af-yellow-hover transition-colors"
+                className="bg-af-yellow border-b md:border-b-0 md:border-r border-af-border flex-1 flex items-end justify-between p-[50px] hover:bg-af-yellow-hover transition-colors"
               >
-                <div className="flex flex-col h-full items-end justify-between w-full">
+                <div className="flex flex-col h-full min-h-[360px] md:min-h-0 items-end justify-between w-full">
                   <div className="flex items-center justify-between w-full font-mono text-af-red text-xl leading-[1.3] tracking-[-0.03em] whitespace-nowrap">
                     <span>#03</span>
                     <span>Entry</span>
@@ -190,14 +190,16 @@ export default function ReportDisplay() {
               </button>
 
               <div className="bg-af-yellow flex-1 flex items-end justify-between p-[50px] opacity-40 cursor-not-allowed select-none">
-                <div className="flex flex-col h-full items-start justify-between w-full">
+                <div className="flex flex-col h-full min-h-[360px] md:min-h-0 items-start justify-between w-full">
                   <div className="flex items-center justify-between w-full font-mono text-af-red text-xl leading-[1.3] tracking-[-0.03em] whitespace-nowrap">
                     <span>Entry</span>
                     <span>#05</span>
                   </div>
-                  <p className="font-mono text-af-red text-xl leading-[1.3] tracking-[-0.03em] text-center w-full whitespace-nowrap">
-                    회원가입하고 부자 생활 습관 이어가기
-                  </p>
+                  <div className="font-mono text-af-red text-xl leading-[1.3] tracking-[-0.03em] whitespace-nowrap">
+                    <p className="hidden md:block">회원가입하고 꾸준한 자산 증식 이어가기</p>
+                    <p className="md:hidden">회원가입하고</p>
+                    <p className="md:hidden">꾸준한 자산 증식 이어가기</p>
+                  </div>
                   <div className="flex items-center justify-between w-full">
                     <div className="h-[147px] w-[139px] relative overflow-hidden shrink-0">
                       <img alt="토마토" src={TOMATO_IMG} className="absolute max-w-none"
