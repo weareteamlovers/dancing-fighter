@@ -9,11 +9,11 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        'af-yellow': 'var(--af-yellow)',
-        'af-yellow-hover': 'var(--af-yellow-hover)',
-        'af-red': 'var(--af-red)',
-        'af-border': 'var(--af-border)',
-        'af-hero-text': 'var(--af-hero-text)',
+        'af-yellow': 'rgb(var(--af-yellow) / <alpha-value>)',
+        'af-yellow-hover': 'rgb(var(--af-yellow-hover) / <alpha-value>)',
+        'af-red': 'rgb(var(--af-red) / <alpha-value>)',
+        'af-border': 'rgb(var(--af-border) / <alpha-value>)',
+        'af-hero-text': 'rgb(var(--af-hero-text) / <alpha-value>)',
       },
       fontFamily: {
         dot: ['DotGothic16', 'Noto Sans KR', 'sans-serif'],
