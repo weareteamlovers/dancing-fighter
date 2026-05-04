@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react'
 import { useFormStore } from '@/store/useFormStore'
 import { useRouter } from 'next/navigation'
 import { parseReport } from '@/lib/openai'
+import { useThemeStore } from '@/store/useThemeStore'
 
 const HERO_IMG = 'https://www.figma.com/api/mcp/asset/eca24d65-cefc-44b5-bf89-6b634f2ccb00'
 const FOOTER_IMG = 'https://www.figma.com/api/mcp/asset/3f1029a5-49b8-45c3-a8da-e77a03de831a'
@@ -15,6 +16,7 @@ const BROCCOLI_IMG = 'https://www.figma.com/api/mcp/asset/94b5a728-3fd6-4182-b0a
 export default function ReportDisplay() {
   const router = useRouter()
   const { formData } = useFormStore()
+  const theme = useThemeStore((s) => s.theme)
   const [rawReport, setRawReport] = useState('')
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState('')
@@ -116,11 +118,13 @@ export default function ReportDisplay() {
         <>
           {/* Hero */}
           <header className="border-l border-r border-t border-af-border w-full h-[720px] relative flex flex-col items-start justify-end px-5 py-[25px] shrink-0 overflow-hidden">
-            <img
-              alt="샐러드"
-              src={HERO_IMG}
-              className="absolute inset-0 w-full h-full object-cover max-w-none pointer-events-none"
-            />
+            {theme === 'yellow' && (
+              <img
+                alt="샐러드"
+                src={HERO_IMG}
+                className="absolute inset-0 w-full h-full object-cover max-w-none pointer-events-none"
+              />
+            )}
             <div className="relative flex flex-col gap-5 items-center text-center text-af-red w-full px-10">
               <p className="font-mono text-base tracking-[-0.03em] leading-[1.3] w-full">자산 생활 설계도 #01</p>
               <h1 className="text-[60px] leading-[1.1] tracking-[0.01em] w-full" style={dotStyle}>
