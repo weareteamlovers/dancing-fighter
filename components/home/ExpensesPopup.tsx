@@ -10,6 +10,7 @@ interface ExpensesPopupProps {
 
 const ITEMS = [
   { key: 'food',      label: '식비',      placeholder: 'ex) 30만원' },
+  { key: 'housing',   label: '주거비',    placeholder: 'ex) 월세 40만원' },
   { key: 'date',      label: '데이트 비용', placeholder: 'ex) 20만원' },
   { key: 'drink',     label: '술 / 친구 약속',   placeholder: 'ex) 10만원' },
   { key: 'transport', label: '교통비',    placeholder: 'ex) 5만 5천원' },
@@ -71,7 +72,7 @@ function formatWon(won: number): string {
 // 저장된 문자열에서 각 항목 값 복원 시도
 function parseExisting(saved: string): Record<ItemKey, string> {
   const result: Record<ItemKey, string> = {
-    food: '', transport: '', telecom: '', date: '',
+    food: '', housing: '', transport: '', telecom: '', date: '',
     sub: '', shopping: '', drink: '', etc: '',
   }
   for (const item of ITEMS) {
