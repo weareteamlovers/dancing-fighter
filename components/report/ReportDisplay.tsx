@@ -173,7 +173,7 @@ export default function ReportDisplay() {
                     <span>Entry</span>
                   </div>
                   <p className="font-mono text-af-red text-xl leading-[1.3] tracking-[-0.03em] text-center w-full whitespace-nowrap">
-                    리포트에서 잘못된 내용 수정하기
+                    입력 사항 수정하러 가기
                   </p>
                   <div className="flex items-center justify-between w-full">
                     <img alt="화살표" src={ARROW_IMG} className="h-[80px] w-[80px] max-w-none" />

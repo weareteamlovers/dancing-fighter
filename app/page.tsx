@@ -147,7 +147,7 @@ export default function HomePage() {
             안티프리즈:
           </h1>
           <p className="font-mono text-[20px] tracking-[-0.03em] leading-[1.4] w-full whitespace-pre-line">
-            {`얼어붙고 싶지 않은 청춘들의 금융 일기장`}
+            {`얼어붙지 않을 청춘들의 금융 일기장`}
           </p>
         </div>
       </header>
@@ -175,10 +175,10 @@ export default function HomePage() {
           {Array.from({ length: 8 }).map((_, i) => (
             <span
               key={i}
-              className="text-af-red text-base tracking-[-0.02em] px-8"
+              className="text-af-red text-base tracking-[-0.02em] px-24"
               style={{ fontFamily: 'DotGothic16, "Noto Sans KR", sans-serif' }}
             >
-              ☀ 돈이 별로 없을 때도 우리들은 얼어붙지 않을거야
+              ☀ 청춘을 얼리지 않으면서 지속 가능한 지출 습관을 설계해줘요
             </span>
           ))}
         </div>
