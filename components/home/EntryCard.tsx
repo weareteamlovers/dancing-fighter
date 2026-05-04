@@ -4,6 +4,7 @@ import { useState } from 'react'
 import { useFormStore } from '@/store/useFormStore'
 import { FormField } from '@/types'
 import EntryPopup from './EntryPopup'
+import ExpensesPopup from './ExpensesPopup'
 
 interface EntryCardProps {
   num: string        // "01" ~ "12"
@@ -79,7 +80,13 @@ export default function EntryCard({
         </button>
       </li>
 
-      {open && (
+      {open && field === 'expenses' ? (
+        <ExpensesPopup
+          value={value}
+          onChange={(v) => setField(field, v)}
+          onClose={() => setOpen(false)}
+        />
+      ) : open && (
         <EntryPopup
           entryNum={`#${num}`}
           title={title}
