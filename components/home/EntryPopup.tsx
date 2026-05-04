@@ -63,6 +63,7 @@ export default function EntryPopup({
             ref={textareaRef}
             value={value}
             onChange={(e) => onChange(e.target.value)}
+            onKeyDown={(e) => { if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); onClose() } }}
             placeholder={placeholder ?? '자유롭게 입력해주세요'}
             rows={4}
             className="w-full bg-transparent border border-af-border px-4 py-3 font-mono text-af-red text-sm tracking-[-0.03em] leading-[1.5] placeholder:text-af-red/40 resize-none outline-none focus:border-af-red"
