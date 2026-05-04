@@ -178,7 +178,7 @@ export default function HomePage() {
               className="text-af-red text-base tracking-[-0.02em] px-24"
               style={{ fontFamily: 'DotGothic16, "Noto Sans KR", sans-serif' }}
             >
-              ☀ 청춘을 얼리지 않으면서 지속 가능한 지출 습관을 설계해줘요
+              ☀ 낭만을 얼리지 않으면서 지속 가능한 지출 습관을 설계해줘요
             </span>
           ))}
         </div>
